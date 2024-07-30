@@ -1,0 +1,71 @@
+{% extends "./plantilla.html" %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <!--El metodo post es mas seguro al transportar datos-->
+
+            <!--Añadir el enctype (Para que un formulario pueda pasar de un template a una vista) (Se ocupa cuando quiero subir archivos) -->
+
+            <form action="{% url 'guardarGenero' %}"
+            enctype="multipart/form-data" id="frm_nuevo_genero" method="post" >
+                <!-- Para que no exista Hackeo -->
+                {% csrf_token %}
+                <label for="" style="color: white;"><b>Nombre:</b></label>
+                <input type="text" name="nombre" class="form-control"
+                id="nombre" placeholder="Ingrese el nombre del genero">
+                <label for=""  style="color: white;"><b>Descripcion</b></label>
+                <textarea name="descripcion" id="descripcion"
+                class="form-control" rows="3" placeholder="Ingrese la descripción">
+                </textarea>
+                <label for=""  style="color: white;"><b>Foto</b></label>
+
+                <!--El accept solo es para aceptar imagenes-->
+                <input type="file" name="foto" class="form-control"
+                id="foto" accept="image/*">
+                <br>
+                <button type="submit" class="btn btn-primary">
+                    Guardar
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'listadoGenero' %}" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
+<script>
+    //document.getElementById('frm_nuevo_genero') //javascript puro
+    $("#frm_nuevo_genero").validate({
+        rules:{ 
+            nombre:{
+                required:true,
+                minlength:3,
+                maxlength:10
+
+            },
+            descripcion:{
+                required:true
+            },
+            foto:{
+                required:true
+            }
+        },
+        messages:{
+            nombre:{
+                required:"Por favor ingrese el nombre",
+                minlength:"El nombre debe tener al menos 3 letras",
+                maxlength:"Maximo 10 caracteres",
+                
+            },
+            descripcion:{
+                required:"La descripcion es obligatoria"
+            },
+            foto:{
+                required:"Por favor seleccione la foto"
+            }
+        }
+    });
+</script>
+{% endblock %}
