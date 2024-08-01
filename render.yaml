@@ -1,8 +1,8 @@
 databases:
-  - name: servidorDeya
+  - name: servidorElizabeth
     plan: free
     databaseName: dbcine #no mayusculas
-    user: deyaneira
+    user: elizabeth
 
 services:
   - type: web
@@ -22,4 +22,4 @@ services:
         value: cineutc-mb47.onrender.com
 
 
-# set DATABASE_URL=postgresql://deyaneira:6VvgFccaHwHreI3Ql8ZVTKmrMasX6NN0@dpg-cqlpkkl6l47c73fj7hhg-a.oregon-postgres.render.com/dbcine_h2cg
+# set DATABASE_URL=postgresql://elizabeth:GTqhifHUAXPQx6i0UZbXlbPpTDqXzUKo@dpg-cqlpkig8fa8c73bgsijg-a.oregon-postgres.render.com/dbcine_l5qn
